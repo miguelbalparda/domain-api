@@ -13,11 +13,9 @@ export const domainAnalysisSchema = z.object({
       "The primary business vertical of the website, concisely described (e.g., 'E-commerce Fashion Retail', 'SaaS Project Management'). Aim for 2-4 impactful words.",
     ),
   gmv: z
-    .number()
-    .int()
-    .min(0)
+    .string()
     .describe(
-      "A numerical estimate of the annual Gross Merchandise Value (GMV) in USD. This should be a single integer (e.g., 750000 for $750K, 3000000 for $3M). If GMV is not applicable or cannot be reasonably estimated as a number, use 0.",
+      "A string representing ONLY the estimated annual Gross Merchandise Value (GMV) range, selected from a predefined list. Examples: '< $500K', '$500K - $1M', '$1M - $5M', '$5M - $10M', '$10M - $25M', '$25M - $50M', '$50M - $100M', '$100M+'. If GMV is not applicable, output 'N/A'.",
     ),
   products: z
     .string()

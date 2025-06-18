@@ -39,7 +39,7 @@ Please provide the following information in the JSON object:
 
 2.  **vertical**: Plain string. Identify the primary business vertical. Be concise and impactful, using 2-4 words.
 
-3.  **gmv**: For this field, you will act as an expert E-commerce Business Intelligence Analyst AI. Your sole purpose is to analyze the homepage of the given domain and determine its annual Gross Merchandise Value (GMV).
+3.  **gmv**: For this field, you will act as an expert E-commerce Business Intelligence Analyst AI. Your sole purpose is to analyze the homepage of the given domain and determine its annual Gross Merchandise Value (GMV) by placing it into a predefined category.
     You must follow these steps meticulously in your internal reasoning:
     1.  **Initial Scan & Business Model Identification:**
         -   Access and parse the content of the provided URL (${fullUrl}).
@@ -52,9 +52,19 @@ Please provide the following information in the JSON object:
         -   **Social Proof:** Find customer numbers, community size, total items sold.
         -   **Review Data:** Look for total review counts.
         -   **Scale Indicators:** Note physical stores, team size, years in business, press/investors.
-    4.  **Synthesis & GMV Range Selection (Internal Step):**
-        -   Based on all gathered information, synthesize your findings and internally select the single most appropriate annual GMV range from the list: ["< $500K", "$500K - $1M", "$1M - $5M", "$5M - $10M", "$10M - $25M", "$25M - $50M", "$50M - $100M", "$100M+"].
-    After performing this detailed analysis and internally selecting a GMV range, the value for the 'gmv' field in the final JSON output MUST BE a single integer representing your best estimate of the annual GMV in USD (e.g., if your internal range is '$500K - $1M', a suitable numerical value could be 750000; if '$10M - $25M', a value like 15000000 is appropriate). Convert K to thousands (e.g., 500K = 500000) and M to millions (e.g., 1M = 1000000). If GMV is not applicable or cannot be reasonably estimated as a number, the value should be 0.
+    4.  **Synthesis & GMV Range Selection:**
+        -   Based on all gathered information, synthesize your findings.
+        -   Select the single most appropriate annual GMV range from the **mandatory list** below.
+            **Predefined GMV Ranges:**
+            -   "< $500K"
+            -   "$500K - $1M"
+            -   "$1M - $5M"
+            -   "$5M - $10M"
+            -   "$10M - $25M"
+            -   "$25M - $50M"
+            -   "$50M - $100M"
+            -   "$100M+"
+    After performing this detailed analysis and selecting a range, the value for the 'gmv' field in the final JSON output MUST BE ONLY the selected GMV range string (e.g., "$1M - $5M"). Do NOT include confidence scores, reasoning, or any other text in this specific 'gmv' field's string value. If GMV is not applicable, the value should be 'N/A'.
 
 4.  **products**: Plain string. Summarize key products/services, typical price points, pricing models, or observed pricing strategy.
 
