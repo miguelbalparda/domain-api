@@ -74,7 +74,7 @@ Please provide the following information in the JSON object:
 `
 
     const { object: analysisResult } = await generateObject({
-      model: perplexity("llama-3-sonar-large-32k-online"),
+      model: perplexity("llama-3.1-sonar-small-128k-online"),
       schema: domainAnalysisSchema,
       prompt: prompt,
       temperature: 0.2,
